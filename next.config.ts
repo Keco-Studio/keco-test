@@ -21,7 +21,7 @@ const csp = [
   `img-src 'self' data: blob: https:`,
   `font-src 'self' data:`,
   `connect-src 'self' ${apiOrigin}`,
-  `frame-ancestors 'none'`,
+  `frame-ancestors 'self' https://app.tarrs.io https://tarrs.io`,
   `form-action 'self'`,
   `base-uri 'self'`,
   `object-src 'none'`,
@@ -36,7 +36,9 @@ const nextConfig: NextConfig = {
         source: '/:path*',
         headers: [
           { key: 'Content-Security-Policy', value: csp },
-          { key: 'X-Frame-Options', value: 'DENY' },
+          // No X-Frame-Options: it only supports DENY/SAMEORIGIN (no
+          // cross-origin allowlist), which would block the Tarrs preview
+          // pane. Framing is controlled by CSP `frame-ancestors` above.
           { key: 'X-Content-Type-Options', value: 'nosniff' },
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
           {
