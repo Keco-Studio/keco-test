@@ -7,8 +7,8 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 config.autoAddCss = false;
 
 export const metadata: Metadata = {
-  title: 'My App',
-  description: 'Built with Tarrs',
+  title: '游戏从策划到开发的全流程 · Workflow',
+  description: '一款游戏是如何被策划、验证、开发并最终上线的 —— 分阶段拆解。',
 };
 
 export default function RootLayout({
