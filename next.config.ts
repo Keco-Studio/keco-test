@@ -21,7 +21,10 @@ const csp = [
   `img-src 'self' data: blob: https:`,
   `font-src 'self' data:`,
   `connect-src 'self' ${apiOrigin}`,
-  `frame-ancestors 'self' https://app.tarrs.io https://tarrs.io`,
+  // Public static showcase, no auth/forms → clickjacking risk is nil.
+  // Allow any ancestor so the Tarrs preview pane (whatever its origin)
+  // can embed it. Tighten later if this page ever gains interactivity.
+  `frame-ancestors *`,
   `form-action 'self'`,
   `base-uri 'self'`,
   `object-src 'none'`,
